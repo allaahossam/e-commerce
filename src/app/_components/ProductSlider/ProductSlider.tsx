@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button"
 
 
 import Link from 'next/link';
+import AddToCartBtn from '@/app/products/AddToCartBtn';
 
 export default async function ProductSlider() {
 
@@ -24,7 +25,7 @@ export default async function ProductSlider() {
   <div className='container mx-auto  md:w-[80%] pt-10 '>
       <div className='flex flex-wrap '>
         {data.map( (product:any)=>{
-      return <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-2 '>
+      return <Card className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-2 '>
         <Link href={`/products/${product._id}`}>
         <Card className='flex  gap-x-2 gap-y-3'>
             <CardHeader>
@@ -39,10 +40,11 @@ export default async function ProductSlider() {
               <p>{product.price}</p>
               <p> <i className="fa-solid fa-star text-amber-300"></i>{product.ratingsAverage}</p>
             </CardFooter>
-            <Button className=' bg-slate-700 hover:bg-slate-900'> <i className="fa-solid fa-plus"></i>Add To Cart</Button>
         </Card>
         </Link>
-      </div>
+
+               <AddToCartBtn productId = {product._id}/>
+      </Card>
 
       
         
