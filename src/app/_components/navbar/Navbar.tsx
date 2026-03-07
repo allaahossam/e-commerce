@@ -1,8 +1,9 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import {Button} from "@/components/ui/button"
 import { signOut, useSession } from 'next-auth/react'
+import { cartContext } from '@/app/_context/CartContext'
 
 export default function Navbar() {
 
@@ -15,6 +16,8 @@ export default function Navbar() {
         signOut({redirect:true , callbackUrl : "/login"})
 
     }
+
+    const{numOfCartItems}= useContext(cartContext)
     
   return (
     <>
@@ -26,7 +29,16 @@ export default function Navbar() {
                 <ul className='flex gap-4  items-center'>
                     <li className=' text-3xl font-semibold bg-gradient-to-r from-green-500 to-lime-500 bg-clip-text text-transparent' ><Link href="/"> <i className="fa-solid fa-cart-shopping font-semibold bg-gradient-to-r from-green-500 to-lime-500 bg-clip-text text-transparent"></i> FreshCart</Link></li>
                     <li className='font-light font-serif  bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent'><Link href="/">Home</Link></li>
-                    <li className='font-light font-serif bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent'><Link href="/carts">Cart</Link></li>
+
+                    <li className='font-light font-serif bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent relative'>
+                        <span className='bg-red-500 text-white text-sm absolute p-1 rounded-2xl -right-2 -top-5'>{numOfCartItems}</span>
+                        
+                        
+                        <Link href="/carts">Cart</Link>
+                        
+                        
+                        </li>
+
                     <li className='font-light font-serif bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent'><Link href="/products">Products</Link></li>
                     <li className='font-light font-serif bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent'><Link href="/categories">Categories</Link></li>
                     <li className='font-light font-serif bg-gradient-to-r from-[#4CAF50] to-[#FF9800] bg-clip-text text-transparent'><Link href="/brands">Brands</Link></li>

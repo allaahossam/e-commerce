@@ -25,7 +25,7 @@ export default async function ProductSlider() {
   <div className='container mx-auto  md:w-[80%] pt-10 '>
       <div className='flex flex-wrap '>
         {data.map( (product:any)=>{
-      return <Card className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-2 '>
+      return <Card key={product._id} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-2 '>
         <Link href={`/products/${product._id}`}>
         <Card className='flex  gap-x-2 gap-y-3'>
             <CardHeader>

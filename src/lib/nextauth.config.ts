@@ -38,27 +38,45 @@ export const nextAuth : NextAuthOptions = {
 
     ],
 
-    callbacks : {
-        jwt(params) {
+    // callbacks : {
+    //     jwt(params) {
             
             
 
-            if (params.user) {
-                params.token.realToken = params.user.realToken
-            }
-            return params
-        },
+    //         if (params.user) {
+    //             params.token.realToken = params.user.realToken
+    //         }
+    //         return params
+    //     },
 
-         session(params) {
-             console.log("params" , params);
+    //      session(params) {
+    //          console.log("params" , params);
 
-             return params.session
-         },
-    },
+    //          return params.session
+    //      },
+    // },
 
    
 
-    pages:{
-        signIn:"/login"
-    }
+    // pages:{
+    //     signIn:"/login"
+    // }
+
+
+    callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.realToken = user.realToken;
+      }
+      return token; // ✅ return token, NOT params
+    },
+
+    session({ session, token }) {
+      session.user.realToken = token.realToken;
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/login",
+  },
 }

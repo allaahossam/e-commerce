@@ -1,13 +1,29 @@
 "use client"
 import { Button } from '@/components/ui/button'
-import AddProduct from '../api/Add Product To Cart'
+import addProduct from '../api/add Product To Cart';
+import { toast } from 'sonner';
+import { useContext } from 'react';
+import { cartContext } from '../_context/CartContext';
+
+
 
 export default function AddToCartBtn({productId} :{productId:string}) {
 
+
+ const{setcartData ,setnumOfCartItems } =  useContext(cartContext)
+
     async function handleBtn(){
-      let data = await AddProduct(productId)
-      console.log(data);
-      
+      let data = await addProduct(productId)
+      console.log(data , "data from btn");
+
+      if (data.data.status == "success") {
+        toast.success(data.data.message , {position :'top-center'})
+        setcartData(data.data)
+        setnumOfCartItems(data?.data?.numOfCartItems)
+
+      }else{
+        toast.error("error" , {position : "top-center"})
+      }
     }
   return <>
   
