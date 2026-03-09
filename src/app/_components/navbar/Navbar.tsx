@@ -34,7 +34,7 @@ export default function Navbar() {
                         <span className='bg-red-500 text-white text-sm absolute p-1 rounded-2xl -right-2 -top-5'>{numOfCartItems}</span>
                         
                         
-                        <Link href="/carts">Cart</Link>
+                        <Link href="/cart">Cart</Link>
                         
                         
                         </li>

@@ -19,9 +19,9 @@ export default function CartContextProvider({children} : {children : React.React
 
        console.log("userCartData" , userCartData);
 
-       setcartData(getData.data)
-       setnumOfCartItems(getData.numOfCartItems)
-       setcartId(getData.cartId)
+       setcartData(userCartData.data)
+setnumOfCartItems(userCartData.numOfCartItems)
+setcartId(userCartData.data._id)
        
     }
     useEffect(function(){

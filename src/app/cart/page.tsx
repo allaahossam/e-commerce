@@ -182,13 +182,15 @@ export default function Cart() {
           {/* Divider */}
           <div className="border-t mt-6 pt-6">
 
-            <button
-              className="w-full py-3 rounded-xl text-white font-semibold
-              bg-gradient-to-r from-indigo-500 to-purple-600
-              hover:shadow-lg hover:scale-[1.02] transition"
-            >
-              Checkout
-            </button>
+           <Link href="/payment">
+  <button
+    className="w-full py-3 rounded-xl text-white font-semibold
+    bg-gradient-to-r from-indigo-500 to-purple-600
+    hover:shadow-lg hover:scale-[1.02] transition"
+  >
+    Checkout
+  </button>
+</Link>
 
             <p className="text-xs text-gray-400 text-center mt-4">
               Taxes and shipping calculated at checkout
